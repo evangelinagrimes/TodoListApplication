@@ -1,16 +1,22 @@
+package com.eva.todoapp.model;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.simple.JSONObject;
+
 import java.time.*;
+
 /**
  * Add tasks, remove tasks, edit tasks, view tasks, marking tasks (complete/incomplete), 
  * add deadlines, remove deadlines, edit deadlines, view deadlines
  */
+
 public class TodoItem {
 	private String task;
 	private boolean isComplete;
 	private LocalDate deadline;
 	private LocalDate currentDate;
-	private List<TodoItem> todoList = new ArrayList<TodoItem>();
+	private JSONObject json;
 	
 	public TodoItem(String taskTitle) {
 		this.task = taskTitle;
@@ -18,7 +24,8 @@ public class TodoItem {
 		this.isComplete = false;
 	}
 	public TodoItem() {
-		
+		json = new JSONObject();
+		json.put("Value1", "Value2");
 	};
 	
 	/**
@@ -39,9 +46,6 @@ public class TodoItem {
 	public LocalDate getDeadline() {
 		return this.deadline;
 	}
-	public String toString() {
-		return "Length of Todo List is " + todoList.size();
-	}
 	
 	/**
 	 * @param 
@@ -49,7 +53,7 @@ public class TodoItem {
 	 * @return This method adds a TodoItem object to the ArrayList, todoList
 	 */
 	public void addTask(TodoItem task) {
-		todoList.add(task);
+		// To be completed
 	}
 	
 	/**
@@ -60,16 +64,7 @@ public class TodoItem {
 	 * object from the list.
 	 */
 	public void removeTask(TodoItem task) {
-		String checkName = task.getTask();
-		int index = 0;
-		
-		for(TodoItem todo: todoList) {
-			if(todo.getTask().equals(checkName))
-				break;
-			else
-				index++;
-		}
-		todoList.remove(index);
+		// To be completed
 	}
 	
 	/**
@@ -78,16 +73,7 @@ public class TodoItem {
 	 * the index of the object in the parameter. Then it edits the task 
 	 */
 	public void editTask(TodoItem task, String newTask) {
-		String checkName = task.getTask();
-		int index = 0;
-		
-		for(TodoItem todo: todoList) {
-			if(todo.getTask().equals(checkName))
-				break;
-			else
-				index++;
-		}
-		todoList.get(index).setTask(newTask);
+		// To be completed
 	}
 	
 	/**
@@ -119,5 +105,8 @@ public class TodoItem {
 		// To be completed
 	}
 	
+	public static void main(String[] args) {
+		new TodoItem();
+	}
 }
 

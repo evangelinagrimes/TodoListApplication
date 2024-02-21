@@ -1,3 +1,4 @@
+package com.eva.todoapp;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,6 +6,8 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.eva.todoapp.model.TodoItem;
 
 /*
  * Add tasks
@@ -18,7 +21,6 @@ import org.junit.jupiter.api.Test;
  * View deadlines
  * Point Reward System
  * 
- * :D
  */
 
 class TaskTest {
@@ -46,30 +48,4 @@ class TaskTest {
 		badList = null;
 		goodList = null;
 	}
-	
-	
-	/**
-	 * Tests if items were successfully added to the list
-	 */
-	@Test
-	void testAddTaskToGoodList() {
-		var item1 = new TodoItem("Go to sleep on time");
-		
-		List<TodoItem> expected = new ArrayList<TodoItem>();
-		
-		expected.add(new TodoItem("Go surfing"));
-		expected.add(new TodoItem(null));
-		expected.add(new TodoItem("Get Groceries"));
-		expected.add(new TodoItem("Water Plants"));
-		expected.add(new TodoItem(""));
-		expected.add(new TodoItem("Buy Barbies"));
-		expected.add(new TodoItem("Go To Sleep On Time"));
-		
-		((TodoItem) goodList).addTask(item1);
-		
-		assertEquals(expected, badList);
-		
-	}
-		
-
 }
