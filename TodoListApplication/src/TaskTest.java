@@ -19,26 +19,23 @@ import org.junit.jupiter.api.Test;
  */
 
 class TaskTest {
-	private TodoItem[] goodList;
-	private TodoItem[] badList;
+	private List<TodoItem> goodList = new ArrayList<TodoItem>();
+	private List<TodoItem> badList = new ArrayList<TodoItem>();
 	
 	@BeforeEach
 	void setUp() {
-		@SuppressWarnings("unchecked")
-		List<TodoItem> goodList = new ArrayList();
 		goodList.add(new TodoItem("Finish Lab"));
 		goodList.add(new TodoItem("Finish Matrix Homework"));
 		goodList.add(new TodoItem("Feed the cat"));
 		goodList.add(new TodoItem("Clean your room"));
 		goodList.add(new TodoItem("Wash your laundry"));
 		
-		List<TodoItem> badList = new ArrayList();
-			badList.add(new TodoItem("Go Surfing"));
-			badList.add(new TodoItem(null));
-			badList.add(new TodoItem("Get Groceries"));
-			badList.add(new TodoItem("Water Plants"));
-			badList.add(new TodoItem(""));
-			badList.add(new TodoItem("Buy Barbies"));
+		badList.add(new TodoItem("Go Surfing"));
+		badList.add(new TodoItem(null));
+		badList.add(new TodoItem("Get Groceries"));
+		badList.add(new TodoItem("Water Plants"));
+		badList.add(new TodoItem(""));
+		badList.add(new TodoItem("Buy Barbies"));
 	}
 	
 	@AfterEach
@@ -52,20 +49,22 @@ class TaskTest {
 	 * Tests if items were successfully added to the list
 	 */
 	@Test
-	void testAddTaskToBadList() {
+	void testAddTaskToGoodList() {
 		var item1 = new TodoItem("Go to sleep on time");
-		var expected = new TodoItem[] {new TodoItem("Go surfing"),
-				new TodoItem(null),
-				new TodoItem("Get groceries"),
-				new TodoItem("Water plants"),
-				new TodoItem(""),
-				new TodoItem("Buy barbies"),
-				new TodoItem("Go to sleep on time")
-				};
 		
-		badList.add(item1);
+		List<TodoItem> expected = new ArrayList<TodoItem>();
 		
-		assertEquals(expected, null);
+		expected.add(new TodoItem("Go surfing"));
+		expected.add(new TodoItem(null));
+		expected.add(new TodoItem("Get Groceries"));
+		expected.add(new TodoItem("Water Plants"));
+		expected.add(new TodoItem(""));
+		expected.add(new TodoItem("Buy Barbies"));
+		expected.add(new TodoItem("Go To Sleep On Time"));
+		
+		((TodoItem) goodList).addTask(item1);
+		
+		assertEquals(expected, badList);
 		
 	}
 		

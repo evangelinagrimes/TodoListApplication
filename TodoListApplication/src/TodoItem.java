@@ -7,15 +7,15 @@ import java.time.*;
  */
 public class TodoItem {
 	private String task;
-	private String status;
+	private boolean isComplete;
 	private LocalDate deadline;
 	private LocalDate currentDate;
-	private List<TodoItem> todoList = new ArrayList();
+	private List<TodoItem> todoList = new ArrayList<TodoItem>();
 	
 	public TodoItem(String taskTitle) {
 		this.task = taskTitle;
 		this.currentDate = LocalDate.now();
-		this.status = "Incomplete";
+		this.isComplete = false;
 	}
 	public TodoItem() {
 		
@@ -98,17 +98,17 @@ public class TodoItem {
 	}
 	
 	/**
-	 * @return This method changes the current status to "Completed"
+	 * @return This method sets isComplete to true
 	 */
 	public void markCompleted() {
-		this.status = "Completed";
+		this.isComplete = true;
 	}
 	
 	/**
-	 * @return This method changes the current status to "Incomplete"
+	 * @return This method sets isComplete to false
 	 */
 	public void markIncomplete() {
-		this.status = "Incomplete";
+		this.isComplete = false;
 	}
 	
 	public void changeDeadline() {
