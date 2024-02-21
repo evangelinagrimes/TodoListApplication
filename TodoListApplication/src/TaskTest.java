@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * View deadlines
  * Point Reward System
  * 
- * :)
+ * :(
  */
 
 class TaskTest {
