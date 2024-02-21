@@ -24,19 +24,21 @@ class TaskTest {
 	
 	@BeforeEach
 	void setUp() {
-		goodList = new TodoItem[] {new TodoItem("Finish Lab"),
-				new TodoItem("Finish Matrix Homework"),
-				new TodoItem("Feed the cat"),
-				new TodoItem("Clean your room"),
-				new TodoItem("Wash your laundry")
-		};
-		badList = new TodoItem[] {new TodoItem("Go surfing"),
-				new TodoItem(null),
-				new TodoItem("Get groceries"),
-				new TodoItem("Water plants"),
-				new TodoItem(""),
-				new TodoItem("Buy barbies")
-		};
+		@SuppressWarnings("unchecked")
+		List<TodoItem> goodList = new ArrayList();
+		goodList.add(new TodoItem("Finish Lab"));
+		goodList.add(new TodoItem("Finish Matrix Homework"));
+		goodList.add(new TodoItem("Feed the cat"));
+		goodList.add(new TodoItem("Clean your room"));
+		goodList.add(new TodoItem("Wash your laundry"));
+		
+		List<TodoItem> badList = new ArrayList();
+			badList.add(new TodoItem("Go Surfing"));
+			badList.add(new TodoItem(null));
+			badList.add(new TodoItem("Get Groceries"));
+			badList.add(new TodoItem("Water Plants"));
+			badList.add(new TodoItem(""));
+			badList.add(new TodoItem("Buy Barbies"));
 	}
 	
 	@AfterEach
