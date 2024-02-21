@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
  * Remove deadlines 
  * Edit deadlines 
  * View deadlines
+ * Point Reward System
  */
 
 class TaskTest {
