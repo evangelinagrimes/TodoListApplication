@@ -30,13 +30,18 @@ public class WindowDisplay extends JFrame{
 		JPanel thePanel = new JPanel();
 		JLabel label1 = new JLabel("Insert Label here");
 		JButton addTaskButton = new JButton("Add Task");
+		JTextField newTextField = new JTextField("Type Here", 15);
+		
 		
 		label1.setText("New Text");
 		label1.setToolTipText("Doesn't do anything");
 		
+		newTextField.setToolTipText("Enter a task you wish to complete");
+		
 		// Updates the contents of the panel
 		thePanel.add(label1);
 		thePanel.add(addTaskButton);
+		thePanel.add(newTextField);
 		
 		// Add the contents of the panel to the frame
 		this.add(thePanel); 
