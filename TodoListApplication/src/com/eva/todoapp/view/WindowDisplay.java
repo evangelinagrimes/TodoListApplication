@@ -4,19 +4,29 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
 
+import java.awt.event.*;
+import java.util.ArrayList;
+
+/**
+ * The 
+ */
 public class WindowDisplay extends JFrame{
+	
+	JPanel mainPanel = new JPanel();
+	ArrayList<JCheckBox> checkboxList;
+	JFrame theFrame;
 	
 	public static void main(String[] args) {
 		
-		new WindowDisplay();
+		new WindowDisplay().buildGUI();
 		
 	}
-	
-	public WindowDisplay() {
+	// The constructor file
+	public void buildGUI() {
 		
 		this.setSize(800,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false); 
+		this.setResizable(true); 
 		this.setTitle("Todo List");
 		
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -26,25 +36,14 @@ public class WindowDisplay extends JFrame{
 		int yPos = (dim.height/2) - (this.getHeight()/2);
 		this.setLocation(xPos, yPos);
 		
-		// Panel object and content declaration
-		JPanel thePanel = new JPanel();
-		JLabel label1 = new JLabel("Insert Label here");
-		JButton addTaskButton = new JButton("Add Task");
-		JTextField newTextField = new JTextField("Type Here", 15);
+		JPanel panelA = new JPanel();
 		
 		
-		label1.setText("New Text");
-		label1.setToolTipText("Doesn't do anything");
+		panelA.add(new JButton("Button 1"));
+		panelA.add(new JButton("Button 2"));
+		panelA.add(new JButton("Button 2"));
 		
-		newTextField.setToolTipText("Enter a task you wish to complete");
-		
-		// Updates the contents of the panel
-		thePanel.add(label1);
-		thePanel.add(addTaskButton);
-		thePanel.add(newTextField);
-		
-		// Add the contents of the panel to the frame
-		this.add(thePanel); 
+		this.add(panelA);
 		
 		this.setVisible(true);
 		
