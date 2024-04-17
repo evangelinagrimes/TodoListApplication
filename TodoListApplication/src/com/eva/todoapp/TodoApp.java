@@ -10,7 +10,18 @@ public class TodoApp {
 	
 	public static void main(String[] args) {
 		
-
+	int odd = intOdd(3);
+	
+	System.out.println(odd);
 	}
 
+
+
+public static int intOdd(int n) {
+	
+	if(n == 1) {
+		return 1;
+	}
+	return (n + (n-1)) + intOdd(n-1);
+}
 }
