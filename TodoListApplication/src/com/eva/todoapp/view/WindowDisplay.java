@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,12 +19,12 @@ import com.eva.todoapp.model.TodoItem;
 public class WindowDisplay implements ActionListener{
     private JFrame frame;
     private JList<TodoItem> todoList;
-    private static DefaultListModel<TodoItem> listModel;
+    private ArrayList<TodoItem> itemList;
 
     public WindowDisplay(){
         frame = new JFrame("To-Do List");
-        listModel = new DefaultListModel<>();
-        todoList = new JList<>(listModel);
+        itemList = new ArrayList<>();
+        todoList = new JList<TodoItem>();
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -48,20 +48,30 @@ public class WindowDisplay implements ActionListener{
 
     // Methods to interact with the view
     public void addTask(TodoItem taskDescription) {
-        listModel.addElement(taskDescription);
+        itemList.add(taskDescription);
     }
     
     public void clearTasks() {
-        listModel.clear();
+        itemList.clear();
     }
     
+//    public void toString() {
+//    	for(TodoItem item: listModel.)
+//    }
+//    
+    @Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
     // Other methods as needed
-   
+    // Question: Is this where I should have these methods? Would it be better to put in controller?
 	public static void main(String[] args) {
 		
-		TodoItem testItem = new TodoItem("Wash Dishes");
-		listModel.addElement(testItem);
 		WindowDisplay view = new WindowDisplay();
+		TodoItem testItem = new TodoItem("Wash Dishes");
+		view.addTask(testItem);
+		
 		
 	}
 } 

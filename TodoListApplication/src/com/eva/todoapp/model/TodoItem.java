@@ -22,6 +22,7 @@ public class TodoItem {
 		this.task = taskTitle;
 		this.currentDate = LocalDate.now();
 		this.isComplete = false;
+		this.deadline = LocalDate.MAX;
 	}
 	public TodoItem() {
 		json = new JSONObject();
