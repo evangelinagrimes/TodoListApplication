@@ -3,6 +3,7 @@ package com.eva.todoapp.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import com.eva.todoapp.model.TodoItem;
 
@@ -24,10 +26,13 @@ public class WindowDisplay implements ActionListener{
     private ArrayList<TodoItem> itemList;
 
     public WindowDisplay(){
+    	
+    	int width = 500; 
+    	int height = 500;
         frame = new JFrame("To-Do List");
         itemList = new ArrayList<>();
         todoList = new JList<TodoItem>();
-        frame.setSize(500, 500);
+        frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Create JPanels
@@ -39,26 +44,27 @@ public class WindowDisplay implements ActionListener{
         toolbarPanel.setLayout(new FlowLayout());
      
         
-        // Add Buttons to Content Page
-        JButton isCompleted = new JButton("Completed");
-        final JTextField tf=new JTextField();  
-        tf.setBounds(50,50, 150,20);  
+        // Add Buttons and Labels to Content Page
+        JButton isCompletedBt = new JButton("Completed");
         JButton addTaskBt = new JButton("Add Task");
-        addTaskBt.setBounds(50,100,95,30);  
-        addTaskBt.addActionListener(new ActionListener(this));  
         
+        JLabel title = new JLabel("TODO LIST APPLICATION");
+        title.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        //title.setHorizontalAlignment(JPanel);
         
         // Add Components to JPanels
-        mainPanel.setBackground(Color.BLUE);
-        mainPanel.add(new JLabel("This is the Main Content of the program -- How far"
-        		+ "will these words reach. I am going to keep typing"), BorderLayout.NORTH);
+        mainPanel.setBackground(Color.LIGHT_GRAY);
+        mainPanel.add(title);
+        
+        toolbarPanel.add(isCompletedBt);
         toolbarPanel.add(addTaskBt);
-        //toolbarPanel.add(new JButton("Add Task"));
+        
+        mainPanel.add(toolbarPanel, BorderLayout.SOUTH);
 
         // Add JPanels to Frame
-        frame.add(new JScrollPane(todoList));
-        frame.add(toolbarPanel);
+        //frame.add(new JScrollPane(todoList));
         frame.add(mainPanel, BorderLayout.CENTER);
+
         
         frame.setVisible(true);
     }
