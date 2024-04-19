@@ -2,6 +2,8 @@ package com.eva.todoapp.view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -11,41 +13,41 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.eva.todoapp.model.TodoItem;
 
-public class WindowDisplay {
+
+public class WindowDisplay implements ActionListener{
     private JFrame frame;
-    private JList<String> todoList;
-    private DefaultListModel<String> listModel;
+    private JList<TodoItem> todoList;
+    private static DefaultListModel<TodoItem> listModel;
 
-    public WindowDisplay() {
+    public WindowDisplay(){
         frame = new JFrame("To-Do List");
         listModel = new DefaultListModel<>();
         todoList = new JList<>(listModel);
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Create JPanels
         JPanel mainPanel = new JPanel();
         JPanel toolbarPanel = new JPanel();
-        JPanel statusPanel = new JPanel();
 
         // Configure Layout for each JPanel
         mainPanel.setLayout(new BorderLayout());
         toolbarPanel.setLayout(new FlowLayout());
-        statusPanel.setLayout(new FlowLayout());
      
         // Add Components to JPanels
         mainPanel.add(new JLabel("Main Content"), BorderLayout.CENTER);
         toolbarPanel.add(new JButton("Button 1"));
         toolbarPanel.add(new JButton("Button 2"));
-        statusPanel.add(new JLabel("Status: Ready"));
 
         frame.add(new JScrollPane(todoList));
-        frame.setSize(500, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       
         frame.setVisible(true);
     }
 
     // Methods to interact with the view
-    public void addTask(String taskDescription) {
+    public void addTask(TodoItem taskDescription) {
         listModel.addElement(taskDescription);
     }
     
@@ -57,6 +59,8 @@ public class WindowDisplay {
    
 	public static void main(String[] args) {
 		
+		TodoItem testItem = new TodoItem("Wash Dishes");
+		listModel.addElement(testItem);
 		WindowDisplay view = new WindowDisplay();
 		
 	}
