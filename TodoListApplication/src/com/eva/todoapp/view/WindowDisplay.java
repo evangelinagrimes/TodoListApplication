@@ -1,6 +1,7 @@
 package com.eva.todoapp.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.eva.todoapp.model.TodoItem;
 
@@ -31,18 +33,33 @@ public class WindowDisplay implements ActionListener{
         // Create JPanels
         JPanel mainPanel = new JPanel();
         JPanel toolbarPanel = new JPanel();
-
+        
         // Configure Layout for each JPanel
         mainPanel.setLayout(new BorderLayout());
         toolbarPanel.setLayout(new FlowLayout());
      
+        
+        // Add Buttons to Content Page
+        JButton isCompleted = new JButton("Completed");
+        final JTextField tf=new JTextField();  
+        tf.setBounds(50,50, 150,20);  
+        JButton addTaskBt = new JButton("Add Task");
+        addTaskBt.setBounds(50,100,95,30);  
+        addTaskBt.addActionListener(new ActionListener(this));  
+        
+        
         // Add Components to JPanels
-        mainPanel.add(new JLabel("Main Content"), BorderLayout.CENTER);
-        toolbarPanel.add(new JButton("Button 1"));
-        toolbarPanel.add(new JButton("Button 2"));
+        mainPanel.setBackground(Color.BLUE);
+        mainPanel.add(new JLabel("This is the Main Content of the program -- How far"
+        		+ "will these words reach. I am going to keep typing"), BorderLayout.NORTH);
+        toolbarPanel.add(addTaskBt);
+        //toolbarPanel.add(new JButton("Add Task"));
 
+        // Add JPanels to Frame
         frame.add(new JScrollPane(todoList));
-       
+        frame.add(toolbarPanel);
+        frame.add(mainPanel, BorderLayout.CENTER);
+        
         frame.setVisible(true);
     }
 
@@ -55,10 +72,14 @@ public class WindowDisplay implements ActionListener{
         itemList.clear();
     }
     
-//    public void toString() {
-//    	for(TodoItem item: listModel.)
-//    }
-//    
+    public String toString() {
+    	String bigString = "";
+    	for(TodoItem item: itemList) {
+    		bigString.concat(item.getTask()+ "\n");
+    	}
+    	return bigString;
+    }
+    
     @Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -75,47 +96,3 @@ public class WindowDisplay implements ActionListener{
 		
 	}
 } 
-
-
-/*
-public class WindowDisplay extends JFrame{
-	
-	JPanel mainPanel = new JPanel();
-	ArrayList<JCheckBox> checkboxList;
-	JFrame theFrame;
-	
-	public static void main(String[] args) {
-		
-		new WindowDisplay().buildGUI();
-		
-	}
-	// The constructor file
-	public void buildGUI() {
-		
-		this.setSize(800,600);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(true); 
-		this.setTitle("Todo List");
-		
-		Toolkit tk = Toolkit.getDefaultToolkit();
-		Dimension dim = tk.getScreenSize();
-		
-		int xPos = (dim.width/2) - (this.getWidth()/2);
-		int yPos = (dim.height/2) - (this.getHeight()/2);
-		this.setLocation(xPos, yPos);
-		
-		JPanel panelA = new JPanel();
-		
-		
-		panelA.add(new JButton("Button 1"));
-		panelA.add(new JButton("Button 2"));
-		panelA.add(new JButton("Button 2"));
-		
-		this.add(panelA);
-		
-		this.setVisible(true);
-		
-	}
-
-}
-*/
