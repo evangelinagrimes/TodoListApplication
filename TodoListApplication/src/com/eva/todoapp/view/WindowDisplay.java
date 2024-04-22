@@ -2,8 +2,11 @@ package com.eva.todoapp.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,8 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import com.eva.todoapp.model.TodoItem;
@@ -38,10 +39,13 @@ public class WindowDisplay implements ActionListener{
         // Create JPanels
         JPanel mainPanel = new JPanel();
         JPanel toolbarPanel = new JPanel();
+        JPanel titlePanel = new JPanel();
         
         // Configure Layout for each JPanel
         mainPanel.setLayout(new BorderLayout());
+        titlePanel.setLayout(new BorderLayout());
         toolbarPanel.setLayout(new FlowLayout());
+        
      
         
         // Add Buttons and Labels to Content Page
@@ -50,11 +54,12 @@ public class WindowDisplay implements ActionListener{
         
         JLabel title = new JLabel("TODO LIST APPLICATION");
         title.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        //title.setHorizontalAlignment(JPanel);
+        
         
         // Add Components to JPanels
         mainPanel.setBackground(Color.LIGHT_GRAY);
-        mainPanel.add(title);
+        titlePanel.add(title);
+        mainPanel.add(titlePanel, BorderLayout.NORTH);
         
         toolbarPanel.add(isCompletedBt);
         toolbarPanel.add(addTaskBt);
